@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/src/paint-me.view.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,15 +98,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./assets/src/index.js":
-/*!*****************************!*\
-  !*** ./assets/src/index.js ***!
-  \*****************************/
+/***/ "./assets/src/paint-me.view.js":
+/*!*************************************!*\
+  !*** ./assets/src/paint-me.view.js ***!
+  \*************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _MyCanvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyCanvas */ \"./assets/src/MyCanvas.js\");\nfunction _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }\n\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance\"); }\n\nfunction _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === \"[object Arguments]\") return Array.from(iter); }\n\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }\n\n // new!\n\nvar registerBlockType = wp.blocks.registerBlockType;\nregisterBlockType(\"guty-paint/block\", {\n  title: \"Guty Paint\",\n  icon: \"admin-customizer\",\n  category: \"common\",\n  attributes: {\n    strokeList: {\n      type: Array,\n      default: []\n    }\n  },\n  edit: function edit(props) {\n    var setAttributes = props.setAttributes;\n    var strokeList = props.attributes.strokeList;\n\n    function addStroke(stroke) {\n      setAttributes({\n        strokeList: [].concat(_toConsumableArray(strokeList), [stroke])\n      });\n    }\n\n    return React.createElement(React.Fragment, null, React.createElement(_MyCanvas__WEBPACK_IMPORTED_MODULE_0__[\"default\"], {\n      addStroke: addStroke,\n      strokeList: strokeList\n    }));\n  },\n  save: function save(props) {\n    var strokeList = props.attributes.strokeList;\n    return React.createElement(\"div\", {\n      class: \"paint-me\",\n      \"data-stroke-list\": JSON.stringify(strokeList)\n    });\n  }\n});\n\n//# sourceURL=webpack:///./assets/src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"react-dom\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _MyCanvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyCanvas */ \"./assets/src/MyCanvas.js\");\n// Even though they're not bundled, they need to be imported\n\n // Import our MyCanvas to call on later\n\n\nready(function () {\n  // There may be many of these, so query them all\n  var containers = document.querySelectorAll(\".paint-me\"); // turn into array instead of node list\n\n  var containersArray = Array.prototype.slice.call(containers);\n  containersArray.forEach(function (element) {\n    // get the props from this div\n    var strokeList = JSON.parse(element.dataset.strokeList); // Call react!\n\n    react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MyCanvas__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n      strokeList: strokeList\n    }), // call MyCanvas and pass the strokeList as props\n    element // need to specify the element to render on\n    );\n  });\n}); // Thank you http://youmightnotneedjquery.com/\n// Very much like $.ready() from jQuery\n\nfunction ready(fn) {\n  if (document.attachEvent ? document.readyState === \"complete\" : document.readyState !== \"loading\") {\n    fn();\n  } else {\n    document.addEventListener(\"DOMContentLoaded\", fn);\n  }\n}\n\n//# sourceURL=webpack:///./assets/src/paint-me.view.js?");
 
 /***/ }),
 
@@ -118,6 +118,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _MyC
 /***/ (function(module, exports) {
 
 eval("module.exports = React;\n\n//# sourceURL=webpack:///external_%22React%22?");
+
+/***/ }),
+
+/***/ "react-dom":
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = ReactDOM;\n\n//# sourceURL=webpack:///external_%22ReactDOM%22?");
 
 /***/ })
 

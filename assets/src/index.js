@@ -7,17 +7,43 @@ registerBlockType("guty-paint/block", {
     icon: "admin-customizer",
     category: "common",
 
-    attributes: {},
+    attributes: {
+        strokeList: {
+            type: Array,
+            default: []
+        }
+    },
 
     edit(props) {
+
+        const { setAttributes } = props;
+        const { strokeList } = props.attributes;
+
+        function addStroke(stroke) {
+            setAttributes({
+                strokeList: [...strokeList, stroke],
+            });
+        }
+
         return (
-            <MyCanvas /> // instead of rewriting, we just use our component
+            <>
+            <MyCanvas
+                addStroke={addStroke}
+                strokeList={strokeList}
+                />
+            </>
         );
     },
 
     save(props) {
+
+        const { strokeList } = props.attributes;
+
         return (
-            <MyCanvas />
+            <div 
+                class="paint-me"
+                data-stroke-list={JSON.stringify(strokeList)}>
+            </div>
         );
     }
 });

@@ -28,3 +28,21 @@ function guty_paint_editor_scripts() {
 
 // Hook the enqueue functions into the editor
 add_action( 'enqueue_block_editor_assets', 'guty_paint_editor_scripts' );
+
+
+/**
+ * Enqueue view scripts
+ */
+function guty_paint_plugin_view_scripts() {
+    if ( is_admin() ) {
+        return;
+    }
+
+    wp_enqueue_script(
+		'guty-paint/view-scripts',
+		plugins_url( '/assets/dist/build.view.js', __FILE__ ),
+        array( 'wp-blocks', 'wp-element', 'react', 'react-dom' )
+    );
+}
+
+add_action( 'enqueue_block_assets', 'guty_paint_plugin_view_scripts' );
